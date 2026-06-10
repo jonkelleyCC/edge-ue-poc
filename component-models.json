@@ -103,7 +103,7 @@
     ]
   },
   {
-    "id": "button-block",
+    "id": "button",
     "fields": [
       {
         "component": "aem-content",
