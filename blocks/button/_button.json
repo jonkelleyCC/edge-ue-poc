@@ -1,7 +1,7 @@
 {
   "definitions": [
     {
-      "title": "Button",
+      "title": "Button Block",
       "id": "button-block",
       "plugins": {
         "xwalk": {
@@ -21,10 +21,14 @@
       "id": "button-block",
       "fields": [
         {
-          "component": "richtext",
-          "name": "text",
-          "label": "Button Link",
-          "valueType": "string"
+          "component": "aem-content",
+          "name": "link",
+          "label": "Link"
+        },
+        {
+          "component": "text",
+          "name": "linkText",
+          "label": "Text"
         },
         {
           "component": "select",
