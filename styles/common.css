@@ -1,0 +1,35 @@
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.font-xxl {
+  font-size: 44px;
+}
+
+.font-xl {
+  font-size: 36px;
+}
+
+.font-l {
+  font-size: 30px;
+}
+
+.font-m {
+  font-size: 26px;
+}
+
+.font-s {
+  font-size: 20px;
+}
+
+.font-xs {
+  font-size: 18px;
+}
