@@ -39,5 +39,11 @@
       "button",
       "title"
     ]
+  },
+  {
+    "id": "pricing-cards",
+    "components": [
+      "pricing-card"
+    ]
   }
 ]
