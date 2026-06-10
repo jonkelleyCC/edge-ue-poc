@@ -4,9 +4,11 @@ export default function decorate(block) {
   const [linkRow, textRow, titleRow, typeRow] = [...block.children].map(
     (row) => row.firstElementChild,
   );
+  console.log(123)
 
   const a = linkRow?.querySelector('a');
   if (!a) return;
+  console.log(a)
 
   const linkText = textRow?.textContent.trim();
   const linkTitle = titleRow?.textContent.trim();

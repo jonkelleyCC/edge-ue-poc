@@ -12,9 +12,6 @@
         },
         {
           "...": "./_image.json#/definitions"
-        },
-        {
-          "...": "./_button.json#/definitions"
         }
       ]
     },

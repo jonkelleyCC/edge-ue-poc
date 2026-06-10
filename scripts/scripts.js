@@ -88,23 +88,27 @@ export function decorateButtons(main) {
       if (new URL(a.href).href === new URL(text, window.location).href) return;
     } catch { /* continue */ }
 
-    // require authored formatting for buttonization
     const strong = a.closest('strong');
     const em = a.closest('em');
-    if (!strong && !em) return;
 
     p.className = 'button-wrapper';
     a.className = 'button';
-    if (strong && em) { // high-impact call-to-action
-      a.classList.add('accent');
-      const outer = strong.contains(em) ? strong : em;
-      outer.replaceWith(a);
+    if (strong && em) {
+      if (strong.contains(em)) {
+        a.classList.add('accent'); // **_link_**
+        strong.replaceWith(a);
+      } else {
+        a.classList.add('tertiary'); // _**link**_
+        em.replaceWith(a);
+      }
     } else if (strong) {
-      a.classList.add('primary');
+      a.classList.add('primary'); // **link**
       strong.replaceWith(a);
-    } else {
-      a.classList.add('secondary');
+    } else if (em) {
+      a.classList.add('secondary'); // _link_
       em.replaceWith(a);
+    } else {
+      a.classList.add('tertiary'); // plain link — no formatting wrapper
     }
   });
 }
