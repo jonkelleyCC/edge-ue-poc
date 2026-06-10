@@ -83,7 +83,7 @@
       "id": "blocks",
       "components": [
         {
-          "title": "Button",
+          "title": "Button Block",
           "id": "button-block",
           "plugins": {
             "xwalk": {
