@@ -238,49 +238,49 @@
       {
         "component": "text",
         "name": "title",
-        "value": "",
+        "value": "Enter Title",
         "label": "Title",
         "valueType": "string"
       },
       {
         "component": "text",
         "name": "destinations",
-        "value": "",
+        "value": "Enter Destinations",
         "label": "Destinations",
         "valueType": "string"
       },
       {
         "component": "text",
         "name": "schedule",
-        "value": "",
+        "value": "Enter Schedule",
         "label": "Schedule",
         "valueType": "string"
       },
       {
         "component": "text",
         "name": "days",
-        "value": "",
+        "value": "Enter Days",
         "label": "Days",
         "valueType": "string"
       },
       {
         "component": "text",
         "name": "tour-length",
-        "value": "",
+        "value": "Enter Tour Length",
         "label": "Tour Length",
         "valueType": "string"
       },
       {
         "component": "text",
         "name": "countries",
-        "value": "",
+        "value": "Enter Countries",
         "label": "Countries",
         "valueType": "string"
       },
       {
         "component": "text",
         "name": "price",
-        "value": "",
+        "value": "Enter Price",
         "label": "Price",
         "valueType": "string"
       },
