@@ -196,16 +196,31 @@
     "id": "hero",
     "fields": [
       {
+        "component": "select",
+        "name": "type",
+        "label": "Hero Type",
+        "options": [
+          {
+            "name": "Image",
+            "value": "image"
+          },
+          {
+            "name": "Video",
+            "value": "video"
+          }
+        ]
+      },
+      {
         "component": "reference",
         "valueType": "string",
-        "name": "image",
-        "label": "Image",
+        "name": "asset",
+        "label": "Asset",
         "multi": false
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "imageAlt",
+        "name": "assetAlt",
         "label": "Alt",
         "value": ""
       },
