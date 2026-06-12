@@ -21,25 +21,24 @@
       "id": "hero",
       "fields": [
         {
-          "component": "select",
-          "name": "type",
-          "label": "Hero Type",
-          "options": [
-            { "name": "Image", "value": "image" },
-            { "name": "Video", "value": "video" }
-          ]
+          "component": "reference",
+          "valueType": "string",
+          "name": "image",
+          "label": "Image",
+          "multi": false
         },
         {
           "component": "reference",
           "valueType": "string",
-          "name": "asset",
-          "label": "Asset",
+          "name": "video",
+          "label": "Video",
+          "description": "Only fill in if the hero type is Video. Leave empty for image heroes.",
           "multi": false
         },
         {
           "component": "text",
           "valueType": "string",
-          "name": "assetAlt",
+          "name": "alt",
           "label": "Alt",
           "value": ""
         },
