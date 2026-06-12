@@ -145,6 +145,83 @@
     ]
   },
   {
+    "id": "cards",
+    "fields": [
+      {
+        "component": "select",
+        "name": "type",
+        "label": "Card Type",
+        "options": [
+          {
+            "name": "Horizontal",
+            "value": "horizontal"
+          },
+          {
+            "name": "Vertical",
+            "value": "vertical"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "columns",
+        "label": "Columns",
+        "options": [
+          {
+            "name": "1",
+            "value": "cols-1"
+          },
+          {
+            "name": "2",
+            "value": "cols-2"
+          },
+          {
+            "name": "3",
+            "value": "cols-3"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "text-align",
+        "label": "Text Align",
+        "options": [
+          {
+            "name": "Left",
+            "value": "left"
+          },
+          {
+            "name": "Center",
+            "value": "center"
+          },
+          {
+            "name": "Right",
+            "value": "right"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "button-position",
+        "label": "Button Position",
+        "options": [
+          {
+            "name": "Left",
+            "value": "left"
+          },
+          {
+            "name": "Center",
+            "value": "center"
+          },
+          {
+            "name": "Right",
+            "value": "right"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "card",
     "fields": [
       {

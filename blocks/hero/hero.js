@@ -34,7 +34,7 @@ export default function decorate(block) {
     dom.append(createOptimizedPicture(img.src, alt, false));
   }
 
-  if (blurbRow?.innerHTML) {
+  if (blurbRow?.textContent.trim()) {
     const blurbDiv = document.createElement('div');
     blurbDiv.classList.add('hero-blurb');
     blurbDiv.innerHTML = blurbRow.innerHTML;
