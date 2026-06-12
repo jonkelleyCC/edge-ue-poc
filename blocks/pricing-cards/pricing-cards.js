@@ -154,7 +154,7 @@ function buildButton(buttonValues) {
       button.textContent = BUTTON_LABELS['learn-more'];
     } else {
       button.classList.add('button', 'primary');
-      button.ariaLabel = BUTTON_LABELS['price-and-build']
+      button.ariaLabel = BUTTON_LABELS['price-and-build'];
       button.textContent = BUTTON_LABELS['price-and-build'];
     }
 
