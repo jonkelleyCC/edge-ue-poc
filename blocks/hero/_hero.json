@@ -22,7 +22,7 @@
       "fields": [
         {
           "component": "select",
-          "name": "heroType",
+          "name": "type",
           "label": "Hero Type",
           "options": [
             { "name": "Image", "value": "image" },
