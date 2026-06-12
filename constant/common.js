@@ -23,6 +23,11 @@ const TOGGLE_LABEL_ICONS = {
   'main-icon': 'camera',
 };
 
+const BUTTON_LABELS = {
+  'learn-more': 'Learn More',
+  'price-and-build': 'Price & Build',
+};
+
 const EXCLUDED_BLOCKS = ['section-metadata', 'main-logo', 'footer-area', 'social-area', 'copyright'];
 
 export {
@@ -31,4 +36,5 @@ export {
   TOGGLE_LABEL_ICONS,
   EXCLUDED_BLOCKS,
   BASE_PATH,
+  BUTTON_LABELS,
 };

@@ -319,6 +319,7 @@ function getMetadata(name, doc = document) {
  * @param {string} [alt] The image alternative text
  * @param {boolean} [eager] Set loading attribute to eager
  * @param {Array} [breakpoints] Breakpoints and corresponding params (eg. width)
+ * @param {string} [classname] The class name for the picture element
  * @returns {Element} The picture element
  */
 function createOptimizedPicture(
@@ -326,6 +327,7 @@ function createOptimizedPicture(
   alt = '',
   eager = false,
   breakpoints = [{ media: '(min-width: 600px)', width: '2000' }, { width: '750' }],
+  classname = '',
 ) {
   const url = !src.startsWith('http') ? new URL(src, window.location.href) : new URL(src);
   const picture = document.createElement('picture');
@@ -359,6 +361,7 @@ function createOptimizedPicture(
       img.setAttribute('loading', eager ? 'eager' : 'lazy');
       img.setAttribute('alt', alt);
       picture.appendChild(img);
+      picture.className = classname;
       img.setAttribute(
         'src',
         `${origin}${pathname}?width=${br.width}&format=${ext}&optimize=medium`,
