@@ -3,7 +3,7 @@
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 24px;
 }
 
@@ -12,11 +12,23 @@
   background-color: var(--background-color);
 }
 
-.cards .cards-card-body {
+.cards .cards-vertical > ul > li {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.cards .card-body {
   margin: 16px;
 }
 
-.cards .cards-card-image {
+.cards .cards-vertical .card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.cards .card-image {
   line-height: 0;
 }
 
@@ -24,4 +36,93 @@
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
+}
+
+.cards > ul.cols-1 {
+  grid-template-columns: 1fr;
+}
+
+.cards > ul.cols-2 {
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+}
+
+.cards > ul.cols-3 {
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+}
+
+.cards li div.buttons-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.cards .cards-vertical li div.buttons-container {
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+.cards li div.buttons-container p {
+  width: 50%;
+  max-width: 280px;
+}
+
+.cards li div.buttons-container a {
+  display: block;
+}
+
+.cards > ul.cards-horizontal {
+  grid-template-columns: 1fr;
+}
+
+.cards > ul.cards-horizontal .card-body{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cards ul.cards-horizontal li {
+  display: flex;
+  width: 100%;
+}
+
+.cards ul.cards-horizontal li div.card-image {
+  width: 55%;
+}
+
+.cards ul.cards-horizontal li div.card-body {
+  width: 45%;
+}
+
+.cards .cards-horizontal li:nth-of-type(even) {
+  flex-direction: row-reverse;
+}
+
+@media screen and (width < 1024px) {
+  .cards > ul.cols-2 {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+
+  .cards li div.buttons-container-single p {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+@media screen and (width < 768px) {
+  .cards .cards-horizontal li {
+    display: block;
+  }
+
+  .cards .cards-horizontal li div.card-image,
+  .cards .cards-horizontal li div.card-body {
+    width: auto;
+  }
+
+  .cards > ul.cards-horizontal .card-body{
+    display: block;
+  }
+
+  .cards .cards-horizontal li:nth-of-type(even) {
+    flex-direction: row;
+  }
 }
