@@ -264,12 +264,7 @@
         "value": "",
         "label": "Text",
         "valueType": "string"
-      }
-    ]
-  },
-  {
-    "id": "card-button",
-    "fields": [
+      },
       {
         "component": "text",
         "name": "label",
