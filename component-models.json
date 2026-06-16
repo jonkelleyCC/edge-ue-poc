@@ -266,36 +266,51 @@
         "valueType": "string"
       },
       {
-        "component": "text",
-        "name": "link",
-        "value": "",
-        "label": "Button Link",
-        "valueType": "string"
-      },
-      {
-        "component": "select",
-        "name": "variant",
-        "label": "Variant",
-        "options": [
+        "component": "container",
+        "name": "test",
+        "label": "Multi Text",
+        "multi": true,
+        "fields": [
           {
-            "name": "Primary",
-            "value": "primary"
+            "component": "text",
+            "name": "label",
+            "value": "",
+            "label": "Button Label",
+            "valueType": "string"
           },
           {
-            "name": "Secondary",
-            "value": "secondary"
+            "component": "text",
+            "name": "link",
+            "value": "",
+            "label": "Button Link",
+            "valueType": "string"
           },
           {
-            "name": "Accent",
-            "value": "accent"
-          },
-          {
-            "name": "Tertiary",
-            "value": "tertiary"
-          },
-          {
-            "name": "Quaternary",
-            "value": "quaternary"
+            "component": "select",
+            "name": "variant",
+            "label": "Variant",
+            "options": [
+              {
+                "name": "Primary",
+                "value": "primary"
+              },
+              {
+                "name": "Secondary",
+                "value": "secondary"
+              },
+              {
+                "name": "Accent",
+                "value": "accent"
+              },
+              {
+                "name": "Tertiary",
+                "value": "tertiary"
+              },
+              {
+                "name": "Quaternary",
+                "value": "quaternary"
+              }
+            ]
           }
         ]
       }
