@@ -25,23 +25,7 @@
             "resourceType": "core/franklin/components/block/v1/block/item",
             "template": {
               "name": "Card",
-              "model": "card",
-              "filter": "card"
-            }
-          }
-        }
-      }
-    },
-    {
-      "title": "Card Button",
-      "id": "card-button",
-      "plugins": {
-        "xwalk": {
-          "page": {
-            "resourceType": "core/franklin/components/block/v1/block/item",
-            "template": {
-              "name": "Card Button",
-              "model": "card-button"
+              "model": "card"
             }
           }
         }
@@ -121,12 +105,7 @@
           "value": "",
           "label": "Text",
           "valueType": "string"
-        }
-      ]
-    },
-    {
-      "id": "card-button",
-      "fields": [
+        },
         {
           "component": "text",
           "name": "label",
@@ -161,12 +140,6 @@
       "id": "cards",
       "components": [
         "card"
-      ]
-    },
-    {
-      "id": "card",
-      "components": [
-        "card-button"
       ]
     }
   ]
