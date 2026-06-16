@@ -57,6 +57,18 @@
         },
         {
           "component": "select",
+          "name": "text-size",
+          "label": "Text Size",
+          "options": [
+            { "name": "xs", "value": "Extra Small" },
+            { "name": "sm", "value": "Small" },
+            { "name": "md", "value": "Medium" },
+            { "name": "lg", "value": "Large" },
+            { "name": "xl", "value": "Extra Large" }
+          ]
+        },
+        {
+          "component": "select",
           "name": "text-align",
           "label": "Text Align",
           "options": [
