@@ -108,7 +108,23 @@
                 "resourceType": "core/franklin/components/block/v1/block/item",
                 "template": {
                   "name": "Card",
-                  "model": "card"
+                  "model": "card",
+                  "filter": "card"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Card Button",
+          "id": "card-button",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Card Button",
+                  "model": "card-button"
                 }
               }
             }

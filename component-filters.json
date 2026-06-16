@@ -27,6 +27,12 @@
     ]
   },
   {
+    "id": "card",
+    "components": [
+      "card-button"
+    ]
+  },
+  {
     "id": "columns",
     "components": [
       "column"
