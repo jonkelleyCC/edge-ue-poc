@@ -105,6 +105,13 @@
           "value": "",
           "label": "Text",
           "valueType": "string"
+        },
+        {
+          "component": "aem-content-fragment",
+          "name": "link",
+          "value": "",
+          "label": "Button Link",
+          "valueType": "string"
         }
       ]
     }
