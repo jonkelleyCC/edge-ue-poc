@@ -1,4 +1,5 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
+import { moveInstrumentation } from '../../scripts/scripts.js';
 import { TOGGLE_LABEL_ICONS, BUTTON_LABELS } from '../../constant/common.js';
 
 function updateImageToggleIcon(toggle, iconName, label) {
@@ -182,6 +183,7 @@ export default function decorate(block) {
 
   divs.forEach((div) => {
     const li = document.createElement('li');
+    moveInstrumentation(div, li);
     const values = extractValues([...div.children].map((child) => child.textContent.trim()));
     const optimizedPictures = buildOptimizedPictures([...div.querySelectorAll('picture')]);
 
