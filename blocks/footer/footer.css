@@ -88,12 +88,21 @@ footer .footer .footer-links-panel ul {
 }
 
 footer .footer .footer-links-panel li {
+  list-style: none;
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.01em;
   line-height: 1.4;
   margin: 0;
   padding: 3px 0;
+}
+
+footer .footer .footer-links-panel li a {
+  color: var(--white-color);
+}
+
+footer .footer .footer-links-panel li a:hover {
+  text-decoration: none;
 }
 
 .footer-below-area {
@@ -156,7 +165,7 @@ footer .footer-below-area-wrapper p {
     column-gap: 0;
   }
 
-  footer .footer .footer-links-panel li {
+  footer .footer .footer-links-panel li a {
     font-size: 13px;
     font-weight: 600;
     line-height: 1.55;

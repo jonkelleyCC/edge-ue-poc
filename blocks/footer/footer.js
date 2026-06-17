@@ -2,6 +2,14 @@ import { getMetadata } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
+function cellReducer(cell) {
+  return cell ? [...cell.children].reduce((acc, child) => {
+    if (child.tagName === 'HR') acc.push([]);
+    else acc[acc.length - 1].push(child);
+    return acc;
+  }, [[]]) : [];
+}
+
 function buildColumn(row) {
   const column = document.createElement('div');
   column.className = 'footer-column';
@@ -19,14 +27,8 @@ function buildColumn(row) {
 
   if (!linksCell) return column;
 
-  // Container multi serializes as a single cell with <hr> separating each item.
-  // Each item: <p>label</p><p><a href="..."></a></p>
   const ul = document.createElement('ul');
-  const groups = [...linksCell.children].reduce((acc, child) => {
-    if (child.tagName === 'HR') acc.push([]);
-    else acc[acc.length - 1].push(child);
-    return acc;
-  }, [[]]);
+  const groups = cellReducer(linksCell);
 
   groups.forEach((nodes) => {
     if (!nodes.length) return;
@@ -48,6 +50,64 @@ function buildColumn(row) {
 
   if (ul.children.length) column.append(ul);
   return column;
+}
+
+function buildSocialArea(row) {
+  const socialAreaWrapper = document.createElement('div');
+  socialAreaWrapper.className = 'social-area-wrapper';
+
+  const socialArea = document.createElement('div');
+  socialArea.className = 'social-area';
+  moveInstrumentation(row, socialArea);
+
+  const [linksCell] = [...row.children];
+  if (!linksCell) return socialArea;
+
+  const groups = cellReducer(linksCell);
+
+  groups.forEach((nodes) => {
+    if (!nodes.length) return;
+    let href = null;
+    let variant = null;
+    nodes.forEach((node) => {
+      const anchor = node.querySelector('a');
+      if (anchor) href = anchor.href;
+      else variant = node.textContent.trim().toLowerCase();
+    });
+    if (!href && !variant) return;
+
+    const item = document.createElement('div');
+    const picture = document.createElement('picture');
+    const img = document.createElement('img');
+    img.src = `/icons/${variant}.svg`;
+    img.alt = variant || '';
+    picture.append(img);
+
+    const a = document.createElement('a');
+    a.href = href || '#';
+    a.setAttribute('aria-label', variant || '');
+
+    item.append(picture, a);
+    socialArea.append(item);
+  });
+  socialAreaWrapper.append(socialArea);
+  return socialAreaWrapper;
+}
+
+function decorateSocialArea(footer) {
+  const socialItems = [...footer.querySelectorAll('.social-area > div')];
+  if (!socialItems.length) return;
+
+  socialItems.forEach((item) => {
+    item.classList.add('social-item');
+    const picture = item.querySelector('picture');
+    const link = item.querySelector('a');
+    if (!picture || !link) return;
+    link.innerHTML = '';
+    link.append(picture);
+    item.innerHTML = '';
+    item.append(link);
+  });
 }
 
 function decorateFooterColumns(footerArea) {
@@ -122,15 +182,38 @@ function decorateFooterColumns(footerArea) {
 function decorateContent(block) {
   const footerAreaWrapper = document.createElement('div');
   footerAreaWrapper.className = 'footer-area-wrapper';
+
   const footerArea = document.createElement('div');
   footerArea.className = 'footer-area';
 
+  const footerBelowArea = document.createElement('div');
+  footerBelowArea.className = 'footer-below-area';
+
+  const footerBelowAreaWrapper = document.createElement('div');
+  footerBelowAreaWrapper.className = 'footer-below-area-wrapper';
+
+  const copyright = document.createElement('p');
+  copyright.className = 'footer-copyright';
+
+  const currentYear = new Date().getFullYear();
+  copyright.innerText = `© Viking Cruises, ${currentYear}. All Rights Reserved.`;
+
   [...block.children].forEach((row) => {
-    footerArea.append(buildColumn(row));
+    // footer-social has 1 child (links only); footer-section has 2 (title + links)
+    if (row.children.length === 1 && row.children[0].querySelector('hr')) {
+      footerBelowAreaWrapper.append(buildSocialArea(row));
+    } else {
+      footerArea.append(buildColumn(row));
+    }
   });
   decorateFooterColumns(footerArea);
+  decorateSocialArea(footerBelowAreaWrapper);
   footerAreaWrapper.append(footerArea);
-  block.replaceChildren(footerAreaWrapper);
+  footerBelowAreaWrapper.append(copyright);
+  footerBelowArea.append(footerBelowAreaWrapper);
+  block.innerHTML = '';
+  block.append(footerAreaWrapper);
+  block.append(footerBelowArea);
 }
 
 export default async function decorate(block) {

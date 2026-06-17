@@ -65,7 +65,7 @@
           "component": "container",
           "name": "links",
           "label": "Links",
-          "collapsible": true,
+          "collapsible": false,
           "multi": true,
           "fields": [
             {
@@ -90,7 +90,7 @@
           "component": "container",
           "name": "links",
           "label": "Links",
-          "collapsible": true,
+          "collapsible": false,
           "multi": true,
           "fields": [
             {
