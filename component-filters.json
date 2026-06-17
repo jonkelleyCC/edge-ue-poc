@@ -45,7 +45,8 @@
   {
     "id": "footer",
     "components": [
-      "footer-section"
+      "footer-section",
+      "footer-social"
     ]
   },
   {
