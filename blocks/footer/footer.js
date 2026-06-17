@@ -44,16 +44,11 @@ function decorateContent(block) {
 }
 
 export default async function decorate(block) {
-  // Block has authored content — decorate directly (also prevents recursion when
-  // this function is called again on the inner footer block during fragment loading)
   if ([...block.children].some((row) => row.textContent.trim())) {
     decorateContent(block);
     return;
   }
 
-  // Block is empty (programmatically created) — load /footer as a fragment.
-  // loadFragment calls footer.js on the inner footer block which has content,
-  // so it takes the decorateContent path above (no infinite recursion).
   const footerMeta = getMetadata('footer');
   const footerPath = footerMeta ? new URL(footerMeta, window.location).pathname : '/footer';
   const fragment = await loadFragment(footerPath);
