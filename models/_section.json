@@ -52,7 +52,8 @@
         "columns",
         "fragment",
         "button",
-        "pricing-cards"
+        "pricing-cards",
+        "footer"
       ]
     }
   ]
