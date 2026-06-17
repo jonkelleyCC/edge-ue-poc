@@ -45,13 +45,7 @@
   {
     "id": "footer",
     "components": [
-      "footer-block"
-    ]
-  },
-  {
-    "id": "footer-block",
-    "components": [
-      "footer-link"
+      "footer-section"
     ]
   },
   {

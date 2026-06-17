@@ -7,25 +7,26 @@ function buildSection(row) {
   section.className = 'footer-section';
   moveInstrumentation(row, section);
 
-  const [titleRow, ...linkRows] = [...row.children];
+  const [titleCell, ...linkCells] = [...row.children];
 
-  if (titleRow?.textContent.trim()) {
-    const title = document.createElement('p');
-    title.className = 'footer-section-title';
-    title.textContent = titleRow.textContent.trim();
-    section.append(title);
+  const titleText = titleCell?.textContent.trim();
+  if (titleText) {
+    const h3 = document.createElement('h3');
+    h3.className = 'footer-section-title';
+    h3.textContent = titleText;
+    section.append(h3);
   }
 
   const ul = document.createElement('ul');
-  linkRows.forEach((linkRow) => {
-    const [linkDiv, labelDiv] = [...linkRow.children];
+  linkCells.forEach((cell) => {
+    const [labelDiv, linkDiv] = [...cell.children];
+    const label = labelDiv?.textContent.trim();
     const href = linkDiv?.querySelector('a')?.href || linkDiv?.textContent.trim();
-    const label = labelDiv?.textContent.trim() || linkDiv?.textContent.trim();
-    if (!href) return;
+    if (!label && !href) return;
     const li = document.createElement('li');
     const a = document.createElement('a');
-    a.href = href;
-    a.textContent = label;
+    a.href = href || '#';
+    a.textContent = label || href;
     li.append(a);
     ul.append(li);
   });
@@ -53,10 +54,11 @@ export default async function decorate(block) {
   const footerPath = footerMeta ? new URL(footerMeta, window.location).pathname : '/footer';
   const fragment = await loadFragment(footerPath);
 
+  block.textContent = '';
   if (fragment) {
-    block.textContent = '';
-    const wrapper = document.createElement('div');
-    while (fragment.firstElementChild) wrapper.append(fragment.firstElementChild);
-    block.append(wrapper);
+    const footerBlock = fragment.querySelector('.footer');
+    if (footerBlock) {
+      while (footerBlock.firstChild) block.append(footerBlock.firstChild);
+    }
   }
 }

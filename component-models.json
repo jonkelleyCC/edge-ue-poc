@@ -332,29 +332,33 @@
     "fields": []
   },
   {
-    "id": "footer-block",
+    "id": "footer-section",
     "fields": [
       {
         "component": "text",
         "name": "title",
         "label": "Block Title",
         "valueType": "string"
-      }
-    ]
-  },
-  {
-    "id": "footer-link",
-    "fields": [
-      {
-        "component": "aem-content",
-        "name": "link",
-        "label": "Link"
       },
       {
-        "component": "text",
-        "name": "label",
-        "label": "Label",
-        "valueType": "string"
+        "component": "container",
+        "name": "links",
+        "label": "Links",
+        "collapsible": true,
+        "multi": true,
+        "fields": [
+          {
+            "component": "text",
+            "name": "label",
+            "label": "Link Label",
+            "valueType": "string"
+          },
+          {
+            "component": "aem-content",
+            "name": "link",
+            "label": "Link Href"
+          }
+        ]
       }
     ]
   },
