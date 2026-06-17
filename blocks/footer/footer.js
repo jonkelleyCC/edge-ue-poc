@@ -126,7 +126,7 @@ function decorateContent(block) {
   footerArea.className = 'footer-area';
 
   [...block.children].forEach((row) => {
-    if (row.textContent.trim()) footerArea.append(buildColumn(row));
+    footerArea.append(buildColumn(row));
   });
   decorateFooterColumns(footerArea);
   footerAreaWrapper.append(footerArea);
