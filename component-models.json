@@ -332,18 +332,18 @@
     "fields": []
   },
   {
-    "id": "footerBlock",
+    "id": "footer-block",
     "fields": [
       {
         "component": "text",
         "name": "title",
-        "label": "Title",
+        "label": "Block Title",
         "valueType": "string"
       }
     ]
   },
   {
-    "id": "footerLink",
+    "id": "footer-link",
     "fields": [
       {
         "component": "aem-content",

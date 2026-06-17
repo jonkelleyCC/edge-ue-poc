@@ -45,13 +45,13 @@
   {
     "id": "footer",
     "components": [
-      "footerBlock"
+      "footer-block"
     ]
   },
   {
-    "id": "footerBlock",
+    "id": "footer-block",
     "components": [
-      "footerLink"
+      "footer-link"
     ]
   },
   {
