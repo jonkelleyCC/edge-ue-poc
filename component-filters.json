@@ -18,7 +18,8 @@
       "fragment",
       "button",
       "pricing-cards",
-      "footer"
+      "footer",
+      "header"
     ]
   },
   {
@@ -47,6 +48,12 @@
     "components": [
       "footer-section",
       "footer-social"
+    ]
+  },
+  {
+    "id": "header",
+    "components": [
+      "header-logo"
     ]
   },
   {
