@@ -411,6 +411,29 @@
     ]
   },
   {
+    "id": "header",
+    "fields": []
+  },
+  {
+    "id": "header-logo",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "desktop-image",
+        "label": "Desktop Image",
+        "multi": false
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "mobile-image",
+        "label": "Mobile Image",
+        "multi": false
+      }
+    ]
+  },
+  {
     "id": "hero",
     "fields": [
       {
