@@ -27,8 +27,16 @@ export default function decorate(block) {
   dom.classList.add('hero-content');
 
   if (videoSrc) {
+    // temp fix for videos, we will probably change the dispatcher instead
+    let directPublishSrc;
+    if (videoSrc.includes('/content/dam/') && videoSrc.endsWith('.mp4')) {
+      const videoUrl = new URL(videoSrc);
+      directPublishSrc = `https://publish-p123749-e1215043.adobeaemcloud.com${videoUrl.pathname}`;
+    }
+    // end temp fix
+
     const posterSrc = picture?.querySelector('img')?.getAttribute('src');
-    dom.append(buildVideo(videoSrc, posterSrc));
+    dom.append(buildVideo(directPublishSrc || videoSrc, posterSrc));
   } else if (picture) {
     const img = picture.querySelector('img');
     dom.append(createOptimizedPicture(img.src, alt, false));
