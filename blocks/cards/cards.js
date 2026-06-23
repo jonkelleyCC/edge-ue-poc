@@ -123,7 +123,8 @@ export default async function decorate(block) {
     const fragmentLink = firstDiv?.querySelector('a[href]');
 
     if (fragmentLink && !firstDiv?.querySelector('picture')) {
-      cfLinks.push(fragmentLink.href);
+      const hrefAsPath = fragmentLink.href.replace(/\.html$/, '');
+      cfLinks.push(hrefAsPath);
       return;
     }
 
