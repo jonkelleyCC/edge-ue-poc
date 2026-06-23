@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-underscore-dangle
 const BASE_PATH = 'https://publish-p123749-e1215043.adobeaemcloud.com/graphql/execute.json/Content-Fragments';
 
 const TITLE_SIZES = {
