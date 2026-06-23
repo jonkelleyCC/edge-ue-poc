@@ -4,7 +4,7 @@ import { TITLE_SIZES } from '../../constant/common.js';
 import transformButtonDiv from '../../helpers/transform-helper.js';
 import getCardDetail from '../../api/card-api.js';
 
-const getInnerText = (el) => el.innerText.trim();
+const getInnerText = (item) => item.innerText.trim();
 
 function toItems(payload) {
   const single = payload?.data?.vikingCardByPath?.item;
@@ -138,13 +138,13 @@ export default async function decorate(block) {
     });
   }
 
-  ul.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach((h) => {
-    h.classList.add(TITLE_SIZES[titleSize]);
+  ul.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach((heading) => {
+    heading.classList.add(TITLE_SIZES[titleSize]);
   });
   ul.querySelectorAll('picture > img').forEach((img) => {
-    const opt = createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]);
-    moveInstrumentation(img, opt.querySelector('img'));
-    img.closest('picture').replaceWith(opt);
+    const optimizedPic = createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]);
+    moveInstrumentation(img, optimizedPic.querySelector('img'));
+    img.closest('picture').replaceWith(optimizedPic);
   });
 
   block.replaceChildren(ul);
