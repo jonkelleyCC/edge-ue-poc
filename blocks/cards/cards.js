@@ -22,7 +22,8 @@ async function fetchCardData(href) {
     if (!response.ok) throw new Error(`${response.status} for ${path}`);
     return response.json();
   } catch (e) {
-    return null;
+    throw new Error(`Fetching error: ${e}`)
+    return;
   }
 }
 
