@@ -30,6 +30,21 @@
           }
         }
       }
+    },
+    {
+      "title": "Fragment Card",
+      "id": "fragment-card",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Fragment Card",
+              "model": "fragment-card"
+            }
+          }
+        }
+      }
     }
   ],
   "models": [
@@ -133,13 +148,25 @@
           ]
         }
       ]
+    },
+    {
+      "id": "fragment-card",
+      "fields": [
+        {
+          "component": "aem-content-fragment",
+          "name": "picker",
+          "label": "Content Fragment Picker",
+          "valueType": "string"
+        }
+      ]
     }
   ],
   "filters": [
     {
       "id": "cards",
       "components": [
-        "card"
+        "card",
+        "fragment-card"
       ]
     }
   ]

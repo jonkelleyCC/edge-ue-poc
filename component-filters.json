@@ -25,7 +25,8 @@
   {
     "id": "cards",
     "components": [
-      "card"
+      "card",
+      "fragment-card"
     ]
   },
   {
