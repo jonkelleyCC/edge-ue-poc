@@ -16,7 +16,7 @@ function toItems(payload) {
 }
 
 async function fetchCardData(href) {
-  const path = new URL(href).pathname;
+  const path = new URL(href).pathname.replace(/\.html$/, '');
   try {
     const response = await fetch(getCardDetail(path));
     if (!response.ok) throw new Error(`${response.status} for ${path}`);
@@ -123,7 +123,8 @@ export default async function decorate(block) {
 
     if (fragmentLink && !firstDiv?.querySelector('picture')) {
       ul.append(li);
-      cfQueue.push({ li, href: fragmentLink.href });
+      const hrefAsPath = fragmentLink.href.replace(/\.html$/, '');
+      cfQueue.push({ li, href: hrefAsPath });
       return;
     }
 

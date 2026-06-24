@@ -1,4 +1,5 @@
-const BASE_PATH = 'https://publish-p123749-e1215043.adobeaemcloud.com/graphql/execute.json/Content-Fragments';
+const BASE_PATH_PUBLISH = 'https://publish-p123749-e1215043.adobeaemcloud.com/graphql/execute.json/Content-Fragments';
+const BASE_PATH_AUTHOR = 'https://author-p123749-e1215043.adobeaemcloud.com/graphql/execute.json/Content-Fragments';
 
 const TITLE_SIZES = {
   xxl: 'font-xxl',
@@ -35,6 +36,7 @@ export {
   PRICING_DETAILS,
   TOGGLE_LABEL_ICONS,
   EXCLUDED_BLOCKS,
-  BASE_PATH,
+  BASE_PATH_PUBLISH,
+  BASE_PATH_AUTHOR,
   BUTTON_LABELS,
 };
