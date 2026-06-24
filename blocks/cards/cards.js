@@ -38,14 +38,15 @@ function buildInlineCard(li) {
   if (buttons) li.querySelector('.card-body')?.append(buttons);
 }
 
-function createCard(item, titleSize, textAlign) {
-  const li = document.createElement('li');
+function createCard(li, item, titleSize, textAlign) {
   li.className = textAlign ? `text-${textAlign}` : 'text-left';
+  li.innerHTML = '';
 
   /* eslint-disable no-underscore-dangle */
   const imageSrc = item?.image?._publishUrl
     || item?.image?._dynamicUrl
     || item?.image?._path;
+  /* eslint-enable no-underscore-dangle */
 
   if (imageSrc) {
     const imageWrapper = document.createElement('div');
@@ -95,8 +96,6 @@ function createCard(item, titleSize, textAlign) {
   }
 
   li.append(body);
-
-  return li;
 }
 
 export default async function decorate(block) {
@@ -110,7 +109,7 @@ export default async function decorate(block) {
   ul.classList.add(`cards-${cardType}`);
   if (columns) ul.classList.add(columns);
 
-  const cfLinks = [];
+  const cfQueue = [];
 
   [...block.children].forEach((row, index) => {
     if (index < 5) return;
@@ -123,7 +122,8 @@ export default async function decorate(block) {
     const fragmentLink = firstDiv?.querySelector('a[href]');
 
     if (fragmentLink && !firstDiv?.querySelector('picture')) {
-      cfLinks.push(fragmentLink.href);
+      ul.append(li);
+      cfQueue.push({ li, href: fragmentLink.href });
       return;
     }
 
@@ -131,16 +131,24 @@ export default async function decorate(block) {
     ul.append(li);
   });
 
-  if (cfLinks.length) {
-    const results = await Promise.all(cfLinks.map(fetchCardData));
-    results.flatMap(toItems).forEach((item) => {
-      ul.append(createCard(item, titleSize, textAlign));
-    });
+  if (cfQueue.length) {
+    await Promise.all(
+      cfQueue.map(async ({ li, href }) => {
+        try {
+          const payload = await fetchCardData(href);
+          const [item] = toItems(payload);
+          if (item) createCard(li, item, titleSize, textAlign);
+        } catch {
+          li.remove();
+        }
+      }),
+    );
   }
 
   ul.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach((heading) => {
     heading.classList.add(TITLE_SIZES[titleSize]);
   });
+
   ul.querySelectorAll('picture > img').forEach((img) => {
     const optimizedPic = createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]);
     moveInstrumentation(img, optimizedPic.querySelector('img'));
